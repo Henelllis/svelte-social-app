@@ -19,7 +19,6 @@
         });
       }}>CLOSE</button
     >
-    <div>{value}</div>
   </div>
 {:else}
   <button

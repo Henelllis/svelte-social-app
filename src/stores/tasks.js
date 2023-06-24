@@ -33,7 +33,20 @@ function createStore() {
     }
   ]);
 
-  return taskList;
+  const { subscribe } = taskList;
+
+  return {
+    subscribe,
+    updateTask: (task, listIdx) => {
+      taskList.update((list) => {
+        const taskIdx = list[listIdx].items.findIndex((item) => item.id === task.id);
+        if (taskIdx > -1) {
+          list[listIdx].items[taskIdx] = { ...task };
+        }
+        return list;
+      });
+    }
+  };
 }
 
 export const taskListStore = createStore();

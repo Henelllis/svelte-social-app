@@ -14,8 +14,8 @@
   </button>
   <div class="flex-it h-full">
     <div class="flex-it flex-row rounded-xl h-full">
-      {#each $taskListStore as task (task.id)}
-        <TaskList {task} />
+      {#each $taskListStore as task, i (task.id)}
+        <TaskList {task} listIdx={i} />
       {/each}
     </div>
   </div>
