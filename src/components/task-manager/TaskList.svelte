@@ -1,5 +1,4 @@
 <script context="module">
-  //this is like Static
   let listHoverId = null;
 </script>
 
@@ -24,11 +23,11 @@
   }
 </script>
 
-<div class="text-white">{listHoverId}</div>
+<!-- <div class="text-white">{listHoverId}</div> -->
 <div class="flex-it h-full w-80 max-w-sm min-h-full m-2 my-0">
   <div
     on:dragenter|preventDefault={(event) => {
-      task.id = listHoverId;
+      listHoverId = task.id;
     }}
     on:dragover|preventDefault={(event) => {}}
     on:drop={drop}
