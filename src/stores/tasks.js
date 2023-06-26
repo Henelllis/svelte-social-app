@@ -33,17 +33,57 @@ function createStore() {
     }
   ]);
 
-  const { subscribe } = taskList;
+  const { subscribe, update } = taskList;
 
   return {
     subscribe,
     updateTask: (task, listIdx) => {
-      taskList.update((list) => {
+      update((list) => {
         const taskIdx = list[listIdx].items.findIndex((item) => item.id === task.id);
         if (taskIdx > -1) {
           list[listIdx].items[taskIdx] = { ...task };
         }
         return list;
+      });
+    },
+    addList: () => {
+      update((list) => {
+        return [
+          ...list,
+          {
+            id: new Date().toISOString(),
+            text: `List ${list.length + 1}`,
+            items: []
+          }
+        ];
+      });
+    },
+    addTask: (listIdx) => {
+      update((list) => {
+        const newList = [...list];
+        newList[listIdx].items = [
+          ...newList[listIdx].items,
+          {
+            id: new Date().toISOString(),
+            text: "WHO AM I"
+          }
+        ];
+
+        return newList;
+      });
+    },
+    moveTask: (fromListIdx, toListIdx, taskIdx) => {
+      update((list) => {
+        console.log("old LIST " + JSON.stringify(list));
+
+        const task = list[fromListIdx].items[taskIdx];
+        console.log("TASK " + JSON.stringify(task));
+        const newList = [...list];
+        newList[fromListIdx].items.splice(taskIdx, 1);
+        newList[toListIdx].items = [...newList[toListIdx].items, task];
+
+        console.log("NEW LIST " + JSON.stringify(newList));
+        return newList;
       });
     }
   };
