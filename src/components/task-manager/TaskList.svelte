@@ -1,12 +1,15 @@
 <script context="module">
-  let listHoverId = null;
+  import { writable } from "svelte/store";
+  let listHoverId = writable(null);
 </script>
 
 <script>
   import TaskItem from "./TaskItem.svelte";
   import TrashCan from "./TrashCan.svelte";
+  import { flip } from "svelte/animate";
+  import { fade, fly } from "svelte/transition";
   import { taskListStore } from "../../stores/tasks.js";
-
+  import { receive, send } from "../../transitions/";
   export let task;
   export let listIdx;
 
@@ -20,6 +23,7 @@
     console.log("TTARGET listIdx  -> " + listIdx);
 
     taskListStore.moveTask(sourceData.listIdx, listIdx, sourceData.taskIdx);
+    listHoverId.set(null);
   }
 </script>
 
@@ -27,7 +31,7 @@
 <div class="flex-it h-full w-80 max-w-sm min-h-full m-2 my-0">
   <div
     on:dragenter|preventDefault={(event) => {
-      listHoverId = task.id;
+      listHoverId.set(task.id);
     }}
     on:dragover|preventDefault={(event) => {}}
     on:drop={drop}
@@ -44,7 +48,9 @@
     </div>
     <div class="overflow-x-hidden overflow-y-auto with-scrollbar p-2">
       {#each task.items as item, taskIdx (item.id)}
-        <TaskItem task={item} {listIdx} {taskIdx} />
+        <div out:fly={{ x: 200 }} animate:flip>
+          <TaskItem task={item} {listIdx} {taskIdx} />
+        </div>
       {/each}
     </div>
     <button on:click={() => taskListStore.addTask(listIdx)} class="underline flex p-2">
