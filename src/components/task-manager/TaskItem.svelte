@@ -39,7 +39,13 @@
       <div class="flex-it flex-row">
         <div class="flex flex-1">{task.text}</div>
         <div class="flex items-end hover:text-red-600">
-          <TrashCan />
+          <button
+            on:click|stopPropagation={(e) => {
+              taskListStore.removeTask(listIdx, taskIdx);
+            }}
+          >
+            <TrashCan />
+          </button>
         </div>
       </div>
     </Editable>

@@ -10,8 +10,11 @@
   import { fade, fly } from "svelte/transition";
   import { taskListStore } from "../../stores/tasks.js";
   import { receive, send } from "../../transitions/";
+  import Editable from "./Editable.svelte";
   export let task;
   export let listIdx;
+
+  let value = task.text;
 
   console.log("MY TASK  " + JSON.stringify(task));
 
@@ -24,6 +27,10 @@
 
     taskListStore.moveTask(sourceData.listIdx, listIdx, sourceData.taskIdx);
     listHoverId.set(null);
+  }
+
+  function updateListText(event) {
+    taskListStore.updateListText(listIdx, value);
   }
 </script>
 
@@ -39,12 +46,16 @@
     class="bg-slate-400 flex-it rounded-xl max-h-full border-2 border-gray-500"
   >
     <div class="flex-it m-3">
-      <div class="flex-it flex-row">
-        <div class="text-xl text-left font-bold mr-2">{task.text}</div>
-        <div class="flex hover:text-red-600 items-center">
-          <TrashCan />
+      <Editable bind:value on:editCancel={updateListText}>
+        <div class="flex-it flex-row">
+          <div class="text-xl text-left font-bold mr-2">{task.text}</div>
+          <div class="flex hover:text-red-600 items-center">
+            <button on:click|stopPropagation={() => taskListStore.removeList(listIdx)}>
+              <TrashCan />
+            </button>
+          </div>
         </div>
-      </div>
+      </Editable>
     </div>
     <div class="overflow-x-hidden overflow-y-auto with-scrollbar p-2">
       {#each task.items as item, taskIdx (item.id)}
