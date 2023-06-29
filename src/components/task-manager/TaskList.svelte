@@ -59,7 +59,7 @@
     </div>
     <div class="overflow-x-hidden overflow-y-auto with-scrollbar p-2">
       {#each task.items as item, taskIdx (item.id)}
-        <div out:fly={{ x: 200 }} animate:flip>
+        <div animate:flip>
           <TaskItem task={item} {listIdx} {taskIdx} />
         </div>
       {/each}
