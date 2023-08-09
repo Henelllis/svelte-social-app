@@ -2,21 +2,12 @@
   import TiTrash from "svelte-icons/ti/TiTrash.svelte";
   import TiMessage from "svelte-icons/ti/TiMessage.svelte";
   import TiHeartOutline from "svelte-icons/ti/TiHeartOutline.svelte";
+  import UserIcon from "./UserIcon.svelte";
 </script>
 
 <div class="flex-it p-4 border-b-1 border-solid border-gray-700">
   <div class="flex-it flex-row">
-    <div class="flex-it mr-4">
-      <div
-        class="w-12 h-12 overflow-visible cursor-pointer transition duration-200 hover:opacity-80"
-      >
-        <img
-          alt=""
-          class="rounded-full"
-          src="https://www.pinclipart.com/picdir/middle/133-1331433_free-user-avatar-icons-happy-flat-design-png.png"
-        />
-      </div>
-    </div>
+    <UserIcon />
     <article class="flex-it flex-grow flex-shrink cursor-pointer">
       <div class="flex-it justify-center flex-grow mb-1">
         <div class="flex-it justify-between flex-row w-full">

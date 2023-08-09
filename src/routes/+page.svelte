@@ -22,6 +22,7 @@
                   Home
                 </div>
               </div>
+
               <!-- HOME PAGE START -->
               <NewGlidePost />
               <div class="h-px bg-gray-700 my-1" />

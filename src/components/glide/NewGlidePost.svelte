@@ -1,17 +1,10 @@
 <script>
   import TiImageOutline from "svelte-icons/ti/TiImageOutline.svelte";
+  import UserIcon from "./UserIcon.svelte";
 </script>
 
 <div class="flex-it py-1 px-4 flex-row">
-  <div class="flex-it mr-4">
-    <div class="w-12 h-12 overflow-visible cursor-pointer transition duration-200 hover:opacity-80">
-      <img
-        alt=""
-        class="rounded-full"
-        src="https://www.pinclipart.com/picdir/middle/133-1331433_free-user-avatar-icons-happy-flat-design-png.png"
-      />
-    </div>
-  </div>
+  <UserIcon />
   <!-- MESSENGER START -->
   <div class="flex-it flex-grow">
     <div class="flex-it">
