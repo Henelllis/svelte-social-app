@@ -1,6 +1,12 @@
 <script>
+  console.log("'DANCE MAGIC");
+
   import TiImageOutline from "svelte-icons/ti/TiImageOutline.svelte";
   import UserIcon from "./UserIcon.svelte";
+
+  export let glideContent;
+  console.log("CONTENT" + glideContent);
+  export let createGlide;
 </script>
 
 <div class="flex-it py-1 px-4 flex-row">
@@ -9,6 +15,7 @@
   <div class="flex-it flex-grow">
     <div class="flex-it">
       <textarea
+        bind:value={glideContent}
         name="content"
         rows="1"
         id="glide"
@@ -27,6 +34,7 @@
       </div>
       <div class="flex-it w-32 mt-3 cursor-pointer">
         <button
+          on:click={createGlide}
           type="button"
           class="
                         disabled:cursor-not-allowed disabled:bg-gray-400

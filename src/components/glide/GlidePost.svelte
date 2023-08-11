@@ -3,17 +3,21 @@
   import TiMessage from "svelte-icons/ti/TiMessage.svelte";
   import TiHeartOutline from "svelte-icons/ti/TiHeartOutline.svelte";
   import UserIcon from "./UserIcon.svelte";
+  export let glide;
+  const { content, user, likesCount, subGlideCount, date } = glide;
+  const { nickName, avatar } = user;
 </script>
 
 <div class="flex-it p-4 border-b-1 border-solid border-gray-700">
   <div class="flex-it flex-row">
-    <UserIcon />
+    <UserIcon {avatar} />
     <article class="flex-it flex-grow flex-shrink cursor-pointer">
       <div class="flex-it justify-center flex-grow mb-1">
         <div class="flex-it justify-between flex-row w-full">
           <div>
-            <span class="font-bold">Filip99</span>
+            <span class="font-bold">{nickName}</span>
             <span class="mx-2">&#8226;</span>
+            <!-- TODO: date time extraction -->
             <span class="text-gray-400">2h</span>
           </div>
           <div class="text-gray-400 cursor-pointer transition hover:text-red-400">
@@ -24,7 +28,7 @@
         </div>
       </div>
       <div class="flex-it flex-row flex-grow-0 items-center mb-2">
-        <div class="flex-it mr-3 mb-3 w-full">My First Post</div>
+        <div class="flex-it mr-3 mb-3 w-full">{content}</div>
       </div>
       <div class="flex-it flex-row flex-grow text-gray-400">
         <div
@@ -33,13 +37,13 @@
           <div class="icon">
             <TiMessage />
           </div>
-          <span class="text-xs ml-3">321</span>
+          <span class="text-xs ml-3">{subGlideCount}</span>
         </div>
         <div class="flex-it flex-row items-center cursor-pointer transition hover:text-pink-400">
           <div class="icon">
             <TiHeartOutline />
           </div>
-          <span class="text-xs ml-3">123</span>
+          <span class="text-xs ml-3">{likesCount}</span>
         </div>
       </div>
     </article>
