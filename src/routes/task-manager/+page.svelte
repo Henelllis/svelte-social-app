@@ -1,6 +1,6 @@
 <script>
-  import TaskList from "../../components/task-manager/TaskList.svelte";
-  import { taskListStore } from "../../stores/tasks.js";
+  import TaskList from "@components/task-manager/TaskList.svelte";
+  import { taskListStore } from "@stores/tasks.js";
 
   export let data;
 </script>

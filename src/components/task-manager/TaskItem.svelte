@@ -1,7 +1,7 @@
 <script>
   import Editable from "./Editable.svelte";
   import TrashCan from "./TrashCan.svelte";
-  import { taskListStore } from "../../stores/tasks";
+  import { taskListStore } from "@stores/tasks";
 
   export let task;
   export let listIdx;

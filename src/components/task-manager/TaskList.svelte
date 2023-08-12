@@ -8,8 +8,8 @@
   import TrashCan from "./TrashCan.svelte";
   import { flip } from "svelte/animate";
   import { fade, fly } from "svelte/transition";
-  import { taskListStore } from "../../stores/tasks.js";
-  import { receive, send } from "../../transitions/";
+  import { taskListStore } from "@stores/tasks.js";
+  import { receive, send } from "@transitions/";
   import Editable from "./Editable.svelte";
   export let task;
   export let listIdx;

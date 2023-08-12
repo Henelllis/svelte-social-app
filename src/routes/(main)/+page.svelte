@@ -1,6 +1,6 @@
 <script>
-  import GlidePost from "../../components/glide/GlidePost.svelte";
-  import NewGlidePost from "../../components/glide/NewGlidePost.svelte";
+  import GlidePost from "@components/glide/GlidePost.svelte";
+  import NewGlidePost from "@components/glide/NewGlidePost.svelte";
   let glideContent = "cat";
   let glides = [];
 

@@ -1,6 +1,6 @@
 <script>
-  import NavSidebar from "../../components/sidebars/NavSidebar.svelte";
-  import TrendsSidebar from "../../components/sidebars/TrendsSidebar.svelte";
+  import NavSidebar from "@components/sidebars/NavSidebar.svelte";
+  import TrendsSidebar from "@components/sidebars/TrendsSidebar.svelte";
   export let data;
 </script>
 
