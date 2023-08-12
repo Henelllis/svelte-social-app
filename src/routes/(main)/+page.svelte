@@ -1,8 +1,6 @@
 <script>
-  import TiImageOutline from "svelte-icons/ti/TiImageOutline.svelte";
-  import UserIcon from "../components/glide/UserIcon.svelte";
-  import GlidePost from "../components/glide/GlidePost.svelte";
-  import NewGlidePost from "../components/glide/NewGlidePost.svelte";
+  import GlidePost from "../../components/glide/GlidePost.svelte";
+  import NewGlidePost from "../../components/glide/NewGlidePost.svelte";
   let glideContent = "cat";
   let glides = [];
 
